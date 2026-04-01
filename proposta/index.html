@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta · Landing Page · Investimentos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ink: #0a0c10;
+      --ink-soft: #1c1f26;
+      --ink-mid: #2e3340;
+      --slate: #8a909e;
+      --mist: #c4c9d4;
+      --ghost: #e8eaee;
+      --snow: #f5f6f8;
+      --white: #ffffff;
+      --gold: #b8996a;
+      --gold-light: #d4b98a;
+      --blue: #1a2744;
+      --blue-mid: #243560;
+      --blue-accent: #2d4a8a;
+      --radius: 2px;
+      --gap: clamp(4rem, 8vw, 8rem);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--ink);
+      color: var(--white);
+      overflow-x: hidden;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── PROPOSAL BADGE ── */
+    .proposal-badge {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--gold);
+      color: var(--ink);
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 28px;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4vw;
+      background: rgba(10, 12, 16, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--slate);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--gold);
+      border: none;
+      padding: 0.6rem 1.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-light);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10rem 4vw 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(26, 39, 68, 0.8) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 70%, rgba(45, 74, 138, 0.15) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 80%);
+    }
+
+    .hero-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-label::before,
+    .hero-label::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      position: relative;
+      margin-bottom: 0.3em;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: var(--slate);
+      max-width: 540px;
+      margin: 1.5rem auto 3rem;
+      position: relative;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn-primary {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--ink);
+      background: var(--gold);
+      border: none;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--mist);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--slate);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: var(--gap) 4vw;
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .section-body {
+      font-size: 0.92rem;
+      color: var(--slate);
+      line-height: 1.8;
+      max-width: 620px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── OVERVIEW ── */
+    .overview {
+      background: var(--ink-soft);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+
+    .overview-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .overview-card {
+      background: var(--ink-soft);
+      padding: 1.8rem;
+      position: relative;
+    }
+
+    .overview-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .overview-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .card-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .card-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    /* ── STRUCTURE SECTION ── */
+    .structure {
+      background: var(--ink);
+    }
+
+    .structure-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.06);
+      margin-top: 1rem;
+    }
+
+    .block-item {
+      background: var(--ink);
+      padding: 2.2rem 2rem;
+      position: relative;
+      cursor: default;
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+
+    .block-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .block-item:hover {
+      background: var(--ink-soft);
+    }
+
+    .block-item:hover::after {
+      transform: scaleX(1);
+    }
+
+    .block-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: rgba(184, 153, 106, 0.15);
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .block-title {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+
+    .block-desc {
+      font-size: 0.83rem;
+      color: var(--slate);
+      line-height: 1.7;
+    }
+
+    .block-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(184, 153, 106, 0.25);
+      padding: 0.25rem 0.7rem;
+    }
+
+    /* ── LOGIC ── */
+    .logic {
+      background: var(--blue);
+    }
+
+    .logic-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-top: 3.5rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+
+    .flow-step {
+      flex: 1;
+      min-width: 160px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+
+    .flow-step:last-child {
+      border-right: none;
+    }
+
+    .flow-step::after {
+      content: '→';
+      position: absolute;
+      right: -0.55rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 0.85rem;
+      z-index: 2;
+    }
+
+    .flow-step:last-child::after {
+      display: none;
+    }
+
+    .flow-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: rgba(184, 153, 106, 0.2);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .flow-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mist);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .flow-desc {
+      font-size: 0.75rem;
+      color: rgba(138, 144, 158, 0.7);
+      line-height: 1.6;
+    }
+
+    /* ── VISUAL DIRECTION ── */
+    .visual-dir {
+      background: var(--ink-soft);
+    }
+
+    .visual-dir-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .palette {
+      display: flex;
+      gap: 0;
+      height: 60px;
+      border-radius: 1px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .swatch {
+      flex: 1;
+      position: relative;
+    }
+
+    .swatch span {
+      position: absolute;
+      bottom: 0.4rem;
+      left: 0.5rem;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+    }
+
+    .typography-demo {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: var(--ink);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .typo-display {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .typo-body {
+      font-size: 0.85rem;
+      color: var(--slate);
+      margin-bottom: 0.8rem;
+      line-height: 1.7;
+    }
+
+    .typo-accent {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .style-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .style-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.4rem 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .style-tag:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .dir-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .dir-list li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      font-size: 0.88rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    .dir-list li::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 0.65em;
+      flex-shrink: 0;
+    }
+
+    /* ── DIFFERENTIALS ── */
+    .differentials {
+      background: var(--ink);
+    }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.05);
+      margin-top: 3.5rem;
+    }
+
+    .diff-item {
+      background: var(--ink);
+      padding: 2.5rem 2rem;
+      transition: background 0.3s;
+    }
+
+    .diff-item:hover {
+      background: rgba(26, 39, 68, 0.4);
+    }
+
+    .diff-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(184, 153, 106, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .diff-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+
+    .diff-desc {
+      font-size: 0.82rem;
+      color: var(--slate);
+      line-height: 1.75;
+    }
+
+    /* ── DELIVERABLES ── */
+    .deliverables {
+      background: var(--blue);
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+
+    .deliver-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .deliver-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.3rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.88rem;
+      color: var(--mist);
+      transition: color 0.3s;
+    }
+
+    .deliver-item:hover {
+      color: var(--white);
+    }
+
+    .deliver-check {
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .deliver-check::after {
+      content: '✓';
+      font-size: 0.65rem;
+      color: var(--gold);
+    }
+
+    .deliver-note {
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 2px solid var(--gold);
+      font-size: 0.85rem;
+      color: var(--slate);
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    /* ── CLOSING ── */
+    .closing {
+      background: var(--ink);
+      text-align: center;
+      padding: calc(var(--gap) * 1.5) 4vw;
+    }
+
+    .closing-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .closing-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .closing-sub {
+      font-size: 0.9rem;
+      color: var(--slate);
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    .closing-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-large {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--ink);
+      background: var(--gold);
+      border: none;
+      padding: 1.2rem 3rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+
+    .btn-large:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-large {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--gold-light);
+      background: transparent;
+      border: 1px solid rgba(184, 153, 106, 0.4);
+      padding: 1.2rem 3rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+
+    .btn-outline-large:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink-soft);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 2rem 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    .footer-note {
+      font-size: 0.72rem;
+      color: var(--slate);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(184, 153, 106, 0.3);
+      padding: 0.4rem 0.9rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-up:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .fade-up:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+
+    .fade-up:nth-child(4) {
+      transition-delay: 0.3s;
+    }
+
+    .fade-up:nth-child(5) {
+      transition-delay: 0.4s;
+    }
+
+    .fade-up:nth-child(6) {
+      transition-delay: 0.5s;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .overview-grid,
+      .structure-intro,
+      .visual-dir-grid,
+      .deliverables-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .overview-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .logic-flow {
+        flex-direction: column;
+      }
+
+      .flow-step {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .flow-step::after {
+        content: '↓';
+        right: auto;
+        top: auto;
+        bottom: -0.6rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .flow-step:last-child::after {
+        display: none;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="prl">
+
+  </div>
+  <!-- Proposal Badge -->
+  <div class="proposal-badge">
+    ✦ Documento de Proposta — Não é o site final ✦
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">Proposta · LP Investimentos</div>
+    <ul class="nav-links">
+      <li><a href="#visao">Visão Geral</a></li>
+      <li><a href="#estrutura">Estrutura</a></li>
+      <li><a href="#visual">Direção Visual</a></li>
+      <li><a href="#entrega">Entrega</a></li>
+    </ul>
+    <button class="nav-cta"
+      onclick="document.getElementById('encerramento').scrollIntoView({behavior:'smooth'})">Aprovar Proposta</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-label">Proposta Estratégica</div>
+    <h1 class="hero-title">Landing Page<br><em>para Investimentos</em></h1>
+    <p class="hero-sub">Uma estrutura de conversão pensada para apresentar com clareza a oferta de acompanhamento expert
+      e maximizar a decisão de compra via tráfego pago.</p>
+    <div class="hero-actions">
+      <a href="#estrutura" class="btn-primary">Explorar Proposta</a>
+      <a href="#visao" class="btn-ghost">Ver Visão Geral</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Role para baixo
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- OVERVIEW -->
+  <section class="overview" id="visao">
+    <div class="section-inner">
+      <div class="overview-grid">
+        <div>
+          <div class="section-label fade-up">01 · Visão Geral</div>
+          <h2 class="section-title fade-up">O projeto <em>em resumo</em></h2>
+          <p class="section-body fade-up">
+            Esta proposta apresenta a estrutura e a direção criativa de uma landing page voltada para a venda de planos
+            de acompanhamento com um expert em investimentos. A página será desenvolvida para converter visitantes
+            vindos de tráfego pago em assinantes de dois planos distintos.
+          </p>
+          <p class="section-body fade-up" style="margin-top:1rem;">
+            Cada seção foi planejada estrategicamente para conduzir o visitante por uma jornada emocional e racional —
+            da identificação do problema até a tomada de decisão.
+          </p>
+        </div>
+        <div class="overview-cards fade-up">
+          <div class="overview-card">
+            <div class="card-icon">📈</div>
+            <div class="card-label">Nicho</div>
+            <div class="card-value">Investimentos</div>
+          </div>
+          <div class="overview-card">
+            <div class="card-icon">🎯</div>
+            <div class="card-label">Produto</div>
+            <div class="card-value">Acompanhamento Expert</div>
+          </div>
+          <div class="overview-card">
+            <div class="card-icon">🔄</div>
+            <div class="card-label">Modelo</div>
+            <div class="card-value">Assinatura · 2 Planos</div>
+          </div>
+          <div class="overview-card">
+            <div class="card-icon">📡</div>
+            <div class="card-label">Origem</div>
+            <div class="card-value">Tráfego Pago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- STRUCTURE -->
+  <section class="structure" id="estrutura">
+    <div class="section-inner">
+      <div class="structure-intro">
+        <div>
+          <div class="section-label fade-up">02 · Estrutura</div>
+          <h2 class="section-title fade-up">Anatomia da <em>Landing Page</em></h2>
+        </div>
+        <p class="section-body fade-up" style="align-self:end;">
+          A página foi organizada em 13 blocos estratégicos. Cada um cumpre um papel específico na jornada de conversão
+          — da atenção à decisão.
+        </p>
+      </div>
+
+      <div class="blocks-grid">
+
+        <div class="block-item fade-up">
+          <span class="block-num">01</span>
+          <div class="block-title">Headline · Subheadline · CTA</div>
+          <p class="block-desc">A primeira dobra captura a atenção em segundos. A headline promete a transformação
+            principal, a subheadline contextualiza e o CTA direciona para a oferta.</p>
+          <span class="block-tag">Atenção</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">02</span>
+          <div class="block-title">Dor</div>
+          <p class="block-desc">Espelha a realidade do visitante — as frustrações com investimentos sem orientação, a
+            sensação de estar perdendo oportunidades e a falta de clareza no mercado.</p>
+          <span class="block-tag">Identificação</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">03</span>
+          <div class="block-title">Solução</div>
+          <p class="block-desc">Apresenta o produto como a resposta direta para as dores mapeadas. Aqui o visitante
+            entende o que é o acompanhamento e como ele muda o jogo.</p>
+          <span class="block-tag">Proposta</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">04</span>
+          <div class="block-title">Como Funciona</div>
+          <p class="block-desc">Detalha o passo a passo da experiência do aluno — da entrada ao acompanhamento. Elimina
+            incerteza sobre o processo e aumenta confiança.</p>
+          <span class="block-tag">Clareza</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">05</span>
+          <div class="block-title">Transformação</div>
+          <p class="block-desc">Contrasta o "antes e depois" — mostra a vida do aluno após o acompanhamento. Ativa o
+            desejo por um futuro melhor e possível.</p>
+          <span class="block-tag">Desejo</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">06</span>
+          <div class="block-title">Público-alvo</div>
+          <p class="block-desc">Qualifica o visitante com uma lista de perfis ideais. Faz o lead certo se sentir chamado
+            — e o errado se identificar antes de comprar.</p>
+          <span class="block-tag">Qualificação</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">07</span>
+          <div class="block-title">Autoridade</div>
+          <p class="block-desc">Apresenta o expert com credenciais, conquistas e números relevantes. Constrói confiança
+            antes de qualquer objeção surgir.</p>
+          <span class="block-tag">Credibilidade</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">08</span>
+          <div class="block-title">Prova Social</div>
+          <p class="block-desc">Depoimentos, resultados de alunos e cases de sucesso. Valida a promessa com vozes reais
+            e constrói consenso social ao redor da oferta.</p>
+          <span class="block-tag">Confiança</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">09</span>
+          <div class="block-title">Objeções</div>
+          <p class="block-desc">Antecipa e responde as principais dúvidas e resistências do visitante — preço, tempo,
+            dificuldade, resultados. Elimina barreiras antes do CTA.</p>
+          <span class="block-tag">Quebra de Resistência</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">10</span>
+          <div class="block-title">Oferta</div>
+          <p class="block-desc">Apresenta o que está incluído na assinatura com detalhes e benefícios. Aumenta o valor
+            percebido antes de exibir os preços dos planos.</p>
+          <span class="block-tag">Valor</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">11</span>
+          <div class="block-title">Planos</div>
+          <p class="block-desc">Exibe os dois planos disponíveis com comparativo claro de recursos, preço e benefícios
+            exclusivos. Facilita a decisão e ancora o plano premium.</p>
+          <span class="block-tag">Decisão</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">12</span>
+          <div class="block-title">Urgência</div>
+          <p class="block-desc">Cria gatilho de tempo ou escassez — vagas limitadas, bônus por prazo ou condição
+            especial. Acelera a tomada de decisão.</p>
+          <span class="block-tag">Acelerador</span>
+        </div>
+
+        <div class="block-item fade-up">
+          <span class="block-num">13</span>
+          <div class="block-title">CTA Final</div>
+          <p class="block-desc">Última chamada poderosa com reforço do benefício principal. Botão claro, copy direta e
+            ancoragem final antes do fechamento da página.</p>
+          <span class="block-tag">Conversão</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- LOGIC -->
+  <section class="logic" id="logica">
+    <div class="section-inner">
+      <div class="section-label fade-up">03 · Lógica da Página</div>
+      <h2 class="section-title fade-up">Uma <em>jornada estruturada</em><br>de conversão</h2>
+      <p class="section-body fade-up" style="margin-top:1rem; max-width:680px;">
+        A sequência dos blocos não é aleatória. Cada seção prepara emocionalmente e racionalmente o visitante para a
+        próxima — criando uma progressão natural que culmina na decisão de assinar.
+      </p>
+
+      <div class="logic-flow fade-up" style="margin-top:3rem;">
+        <div class="flow-step">
+          <div class="flow-num">①</div>
+          <div class="flow-title">Capturar</div>
+          <div class="flow-desc">Atenção imediata na primeira dobra</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">②</div>
+          <div class="flow-title">Conectar</div>
+          <div class="flow-desc">Espelhar a dor e criar identificação</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">③</div>
+          <div class="flow-title">Apresentar</div>
+          <div class="flow-desc">Solução, como funciona e transformação</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">④</div>
+          <div class="flow-title">Validar</div>
+          <div class="flow-desc">Autoridade e prova social constroem confiança</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">⑤</div>
+          <div class="flow-title">Converter</div>
+          <div class="flow-desc">Oferta, planos, urgência e CTA final</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VISUAL DIRECTION -->
+  <!-- <section class="visual-dir" id="visual">
+  <div class="section-inner">
+    <div class="visual-dir-grid">
+      <div>
+        <div class="section-label fade-up">04 · Direção Visual</div>
+        <h2 class="section-title fade-up">Estética <em>premium</em><br>e confiável</h2>
+        <p class="section-body fade-up" style="margin-top:1rem;">
+          A landing page terá um visual refinado e moderno, alinhado ao universo financeiro de alto nível. A identidade visual transmitirá seriedade, expertise e confiança — sem abrir mão da modernidade.
+        </p>
+
+        <div class="style-tags fade-up">
+          <span class="style-tag">Dark Mode</span>
+          <span class="style-tag">Tipografia Elegante</span>
+          <span class="style-tag">Minimalista</span>
+          <span class="style-tag">Sobrio</span>
+          <span class="style-tag">Espaçoso</span>
+          <span class="style-tag">Premium</span>
+          <span class="style-tag">Responsivo</span>
+        </div>
+
+        <ul class="dir-list fade-up" style="margin-top:2.5rem;">
+          <li>Cores sóbrias com fundo escuro — transmite autoridade e sofisticação</li>
+          <li>Tipografia com serifa refinada nos títulos para elegância editorial</li>
+          <li>Espaçamento generoso entre seções para clareza e respiro visual</li>
+          <li>Elementos dourados como acento de destaque — reforça o premium</li>
+          <li>Layout limpo sem excessos — foco total na mensagem e no CTA</li>
+        </ul>
+      </div>
+      <div class="fade-up">
+        <div class="palette">
+          <div class="swatch" style="background:#0a0c10; flex:1.5;"><span>#0A0C10</span></div>
+          <div class="swatch" style="background:#1a2744;"><span>#1A2744</span></div>
+          <div class="swatch" style="background:#2d4a8a;"><span>#2D4A8A</span></div>
+          <div class="swatch" style="background:#b8996a;"><span>#B8996A</span></div>
+          <div class="swatch" style="background:#c4c9d4;"><span>#C4C9D4</span></div>
+        </div>
+        <div class="typography-demo">
+          <div class="typo-display">Invista com Inteligência</div>
+          <p class="typo-body">O acompanhamento certo pode ser a diferença entre resultados mediocres e uma carteira consistentemente lucrativa.</p>
+          <div class="typo-accent">Cormorant Garamond · DM Sans</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+  <div class="divider"></div>
+
+  <!-- DIFFERENTIALS -->
+  <section class="differentials" id="diferenciais">
+    <div class="section-inner">
+      <div class="section-label fade-up">04 · Diferenciais</div>
+      <h2 class="section-title fade-up">O que faz esta<br><em>entrega ser diferente</em></h2>
+
+      <div class="diff-grid">
+        <div class="diff-item fade-up">
+          <div class="diff-icon">⚡</div>
+          <div class="diff-title">Estrutura para Conversão</div>
+          <p class="diff-desc">Cada elemento da página é posicionado com intenção estratégica — sem desperdício de
+            atenção nem seção decorativa.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-icon">✍</div>
+          <div class="diff-title">Copy Estratégica</div>
+          <p class="diff-desc">A organização dos textos segue princípios de copywriting de resposta direta, calibrados
+            para o perfil do investidor.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-icon">◈</div>
+          <div class="diff-title">Design Profissional</div>
+          <p class="diff-desc">Visual cuidado, hierarquia clara e identidade consistente — sem parecer template genérico
+            ou amador.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-icon">📱</div>
+          <div class="diff-title">Responsividade Total</div>
+          <p class="diff-desc">Layout adaptado para desktop, tablet e mobile — fundamental para tráfego pago, que
+            converte majoritariamente em celular.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-icon">🎯</div>
+          <div class="diff-title">Foco no Público Certo</div>
+          <p class="diff-desc">Linguagem, tom e argumentos calibrados para o perfil do investidor — elimina leads
+            desqualificados e atrai os certos.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-icon">🔁</div>
+          <div class="diff-title">Modelo de Assinatura Claro</div>
+          <p class="diff-desc">Apresentação dos dois planos com comparativo visual que facilita a decisão e ancora o
+            plano de maior valor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- DELIVERABLES -->
+  <section class="deliverables" id="entrega">
+    <div class="section-inner">
+      <div class="deliverables-grid">
+        <div>
+          <div class="section-label fade-up">05 · Entrega do Projeto</div>
+          <h2 class="section-title fade-up">O que está<br><em>incluído</em></h2>
+          <p class="section-body fade-up" style="margin-top:1rem;">
+            A entrega é completa — do planejamento estratégico ao código final. Nenhuma etapa crítica fica de fora.
+          </p>
+          <div class="deliver-note fade-up" style="margin-top:2rem;">
+            "Esta proposta representa o planejamento detalhado do projeto. Após aprovação, o desenvolvimento segue
+            exatamente a estrutura apresentada aqui."
+          </div>
+        </div>
+        <div>
+          <ul class="deliver-list fade-up">
+            <li class="deliver-item"><span class="deliver-check"></span>Landing page completa em código</li>
+            <li class="deliver-item"><span class="deliver-check"></span>Estrutura de vendas com 13 seções</li>
+            <li class="deliver-item"><span class="deliver-check"></span>Adaptação da copy para o produto</li>
+            <li class="deliver-item"><span class="deliver-check"></span>Seção de planos com comparativo visual</li>
+            <li class="deliver-item"><span class="deliver-check"></span>Design responsivo para mobile e desktop</li>
+            <li class="deliver-item"><span class="deliver-check"></span>Hierarquia visual clara e profissional</li>
+            <li class="deliver-item"><span class="deliver-check"></span>Gatilhos de urgência e escassez</li>
+            <li class="deliver-item"><span class="deliver-check"></span>Organização estratégica das seções</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CLOSING -->
+  <section class="closing" id="encerramento">
+    <div class="section-inner">
+      <div class="section-label fade-up" style="justify-content:center;">06 · Próximo Passo</div>
+      <h2 class="closing-title fade-up">Pronto para <em>avançar</em><br>com o projeto?</h2>
+      <p class="closing-sub fade-up">
+        Esta proposta apresenta com precisão a estrutura, a lógica e a direção visual da landing page. O próximo passo é
+        sua aprovação para iniciarmos o desenvolvimento.
+      </p>
+      <div class="closing-actions fade-up">
+        <a href="https://wa.me/55SEUNUMEROAQUI?text=Vamos%20dar%20continuidade%20no%20projeto." target="_blank"
+          rel="noopener noreferrer" class="btn-large">Aprovar Direção do Projeto</a>
+        <a href="https://wa.me/55SEUNUMEROAQUI?text=Vamos%20dar%20continuidade%20no%20projeto." target="_blank"
+          rel="noopener noreferrer" class="btn-outline-large">Seguir com Desenvolvimento</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">LP Investimentos · Proposta</div>
+    <div class="footer-note">Documento de apresentação estratégica · Não é o site final do produto</div>
+    <div class="footer-badge">Proposta Oficial</div>
+  </footer>
+
+  <script>
+    // Intersection Observer for fade-up animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Smooth nav active state
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      });
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--gold-light)' : '';
+      });
+    });
+  </script>
+
+</body>
+
+</html>
